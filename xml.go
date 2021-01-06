@@ -539,13 +539,10 @@ func cast(s string, r bool, t string) interface{} {
 			if f, err := strconv.ParseInt(s, 10, 64); err == nil {
 				return f
 			}
-			if f, err := strconv.ParseUint(s, 10, 64); err == nil {
-				return f
-			}
 		}
 
 		if castToFloat {
-			if f, err := strconv.ParseFloat(s, 64); err == nil {
+			if f, err := strconv.ParseFloat(s, 64); err == nil && fmt.Sprintf("%f", f) == s {
 				return f
 			}
 		}
